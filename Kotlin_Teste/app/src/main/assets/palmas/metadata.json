@@ -1,0 +1,25 @@
+{
+  "bounds": [
+    -48.45,
+    -10.42,
+    -48.05,
+    -10.08
+  ],
+  "description": "Recorte de Palmas, Taquaralto e Taquaruçu; não é o limite municipal.",
+  "source": "OpenStreetMap / Geofabrik Norte",
+  "license": "ODbL-1.0",
+  "featureCounts": {
+    "roads": 13719,
+    "areas": 4413,
+    "waterways": 2044,
+    "places": 17
+  },
+  "routingTilesByLevel": {
+    "0": 4,
+    "1": 4,
+    "2": 16
+  },
+  "routingBytes": 12134400,
+  "routingSha256": "c41ab80e5a470bfb8d78a06d84ebd3889fabd0ff3bee11f8205a2b919c1d3d0e",
+  "invalidGeometriesSkipped": 2
+}

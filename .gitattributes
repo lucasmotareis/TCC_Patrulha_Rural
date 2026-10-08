@@ -1,0 +1,11 @@
+* text=auto
+*.kt text eol=lf
+*.kts text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+gradlew text eol=lf
+*.tar binary
+*.jar binary
+*.pbf binary

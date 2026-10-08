@@ -1,0 +1,9 @@
+<!-- Resource overrides consumed by Ferrostar UI, not referenced directly by our Kotlin. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources">
+    <string name="end_navigation">Encerrar navegação</string>
+    <string name="arrival">Chegada</string>
+    <string name="duration">Tempo</string>
+    <string name="distance">Distância</string>
+    <string name="maneuver_image">Direção da próxima manobra</string>
+    <string name="maneuver_instruction_image">Instrução de manobra</string>
+</resources>

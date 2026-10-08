@@ -1,0 +1,33 @@
+# Third-party checkouts used as local references; dependencies come from Gradle.
+/ferrostar/
+/maplibre-navigation-android/
+/valhalla/
+/valhalla-mobile/
+
+# Regional inputs and routing-generation workspaces.
+/custom_files/
+/dados_palmas/
+/dados_palmas_norte_v2/
+*.osm.pbf
+
+# Local tools, IDE metadata and build products.
+**/.tools/
+**/.gradle/
+**/.kotlin/
+**/.idea/
+**/build/
+**/out/
+**/__pycache__/
+*.py[cod]
+*.iml
+local.properties
+*.apk
+*.aab
+.DS_Store
+
+# Local signing and environment configuration.
+*.jks
+*.keystore
+.env
+.env.*
+!.env.example
