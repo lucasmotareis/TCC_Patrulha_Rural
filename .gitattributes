@@ -9,3 +9,9 @@ gradlew text eol=lf
 *.tar binary
 *.jar binary
 *.pbf binary
+
+# Packaged resources have byte lengths and SHA-256 hashes in their manifests.
+# Preserve their bytes on every platform, including JSON and GeoJSON files.
+Kotlin_Teste/app/src/main/batalhaoAssets/** -text
+Kotlin_Teste/app/src/androidTest/assets/** -text
+Kotlin_Teste/validation/8bpm-2026-10-20/cbers/package.json -text

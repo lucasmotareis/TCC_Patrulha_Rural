@@ -8,6 +8,9 @@
 /custom_files/
 /dados_palmas/
 /dados_palmas_norte_v2/
+/dados_batalhao/
+/dados_qgis/
+/exportacoes/
 *.osm.pbf
 
 # Local tools, IDE metadata and build products.
