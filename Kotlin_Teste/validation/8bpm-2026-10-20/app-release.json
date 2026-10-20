@@ -1,0 +1,25 @@
+{
+  "versionName": "0.6.1",
+  "versionCode": 9,
+  "abi": "arm64-v8a",
+  "apk": "8bpm-v0.6.1-arm64.apk",
+  "bytes": 59242636,
+  "sha256": "eb1afd71e4451a90313f679aec535cf22f8ed5c43f758c26ad784d2e6075d1a9",
+  "mapPackage": "cbers8bpm-v1",
+  "mapArchive": "dados_qgis/cbers_8bpm_completo/cbers8bpm-v1.tar (local, não versionado)",
+  "mapArchiveSha256": "05982281cbf299ee41b52dd117f47628542be77bd5b1dbe5c36c4a833d27f889",
+  "changes": [
+    "Linhas azuis de rios e córregos ocultadas nos fundos Satélite e Vetorial."
+  ],
+  "validation": {
+    "instrumentedTests": 24,
+    "instrumentedPassed": 24,
+    "unitTests": 19,
+    "packageTests": 9,
+    "lintErrors": 0,
+    "lintWarnings": 12,
+    "mapStorageKiB": 7457447,
+    "device": "SM-A346M / Android 16",
+    "streamsVisibilityInPackagedStyle": "none"
+  }
+}

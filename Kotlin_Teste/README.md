@@ -1,8 +1,14 @@
 # Palmas Offline
 
+**Versão atual: satélite regional offline do Vale do Araguaia (0.6.1).** O mosaico CBERS-4A dos 11 municípios tem 7,23 GB de blocos PNG, com cenas de 2023 a 2026 e cobertura válida de 99,998% do recorte. A transferência por USB e a validação estão em [CBERS_REGIAO.md](CBERS_REGIAO.md). O pacote vetorial inclui pontos e perímetros dos assentamentos e os acessos à Chácara 2 Meninos e ao Onalício Barros; veja [BATALHAO.md](BATALHAO.md). A compilação usa `app/src/main/batalhaoAssets`. A [amostra do Onalício](CBERS_TESTE.md) permanece disponível sem o pacote regional.
+
+O mapa visual é recortado pela união dos 11 municípios do IBGE. A base de rotas conserva a margem operacional de 15 km para manter as conexões nas divisas. Os pontos da lista compartilhada conservam sua situação de revisão; o ponto 40, declarado incorreto, e os pontos fora do recorte não entram no pacote. Tocar um marcador de assentamento escolhe sua coordenada como destino e mostra o nome e a situação de revisão. Isso não confirma uma entrada nem garante que exista rota até o ponto.
+
+As camadas vetoriais e a base de rotas estão incluídas no APK. O satélite regional é transferido para a pasta de arquivos do aplicativo, separadamente do instalador. Os GeoPackages e projetos originais do QGIS continuam sendo as fontes de edição.
+
 Protótipo Android em Kotlin e Jetpack Compose, com Valhalla Mobile 0.6.4,
 Ferrostar 0.57.0 e MapLibre Native 13.6.1 (OpenGL ES).
-O mapa visual e o cálculo de rotas usam dados locais incluídos no APK.
+O mapa vetorial e o cálculo de rotas usam dados locais incluídos no APK; o satélite lê os blocos do pacote regional no armazenamento do app.
 O aplicativo não depende do Docker e não possui permissão de internet. GPS é solicitado somente para navegação real.
 
 ## Usar no celular
@@ -21,10 +27,12 @@ O mapa permite zoom e deslocamento. **Enquadrar** volta a mostrar a rota/pontos 
 Editar um ponto ou trocar o transporte limpa a rota anterior.
 A navegação veicular oferece GPS real, simulação e instruções faladas quando há uma voz portuguesa offline instalada. Busca de endereços não está incluída.
 
-O recorte visual cobre Palmas, Taquaralto e Taquaruçu, entre as coordenadas
-`oeste=-48.45, sul=-10.42, leste=-48.05, norte=-10.08`.
-Esse retângulo não é o polígono administrativo do município.
-Os pontos de origem e destino devem estar dentro dele.
+Com o pacote regional transferido, **Satélite** e **Vetorial** alternam o fundo. **Área do 8º BPM** enquadra os onze municípios; as estradas, os assentamentos e a rota permanecem sobre a imagem. Na versão 0.6.1, as linhas azuis de rios e córregos ficam ocultas nos dois fundos.
+
+O enquadramento inicial mostra a região do 8º BPM. Amplie o mapa para consultar os
+assentamentos e suas estradas. A validação inicial de origem e destino usa o envelope
+da região com margem; o motor verifica se há via disponível a até 100 m do ponto.
+As seções históricas sobre Palmas abaixo registram as versões anteriores.
 
 ## Navegação de viaturas
 

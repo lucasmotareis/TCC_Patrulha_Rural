@@ -1,0 +1,9 @@
+{
+  "archive": "dados_qgis/cbers_8bpm_completo/cbers8bpm-v1.tar",
+  "bytes": 7356098560,
+  "sha256": "05982281cbf299ee41b52dd117f47628542be77bd5b1dbe5c36c4a833d27f889",
+  "manifestSha256": "cfc4cb90d9a58235db4fec0f64497bfe46590ae5987ea94a11461c27513443ab",
+  "tileCount": 130555,
+  "tileBytes": 7229536232,
+  "coveredFraction": 0.9999819653492297
+}

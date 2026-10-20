@@ -1,0 +1,112 @@
+[
+  {
+    "zoom": 7,
+    "tiles": 1,
+    "bytes": 30311,
+    "regionPixels": 12916,
+    "missingPixels": 0,
+    "coveredFraction": 1.0,
+    "outsidePixelsRemoved": 435,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 0
+  },
+  {
+    "zoom": 8,
+    "tiles": 4,
+    "bytes": 115852,
+    "regionPixels": 51688,
+    "missingPixels": 0,
+    "coveredFraction": 1.0,
+    "outsidePixelsRemoved": 902,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 0
+  },
+  {
+    "zoom": 9,
+    "tiles": 12,
+    "bytes": 419247,
+    "regionPixels": 206780,
+    "missingPixels": 0,
+    "coveredFraction": 1.0,
+    "outsidePixelsRemoved": 1872,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 0
+  },
+  {
+    "zoom": 10,
+    "tiles": 35,
+    "bytes": 1544430,
+    "regionPixels": 827174,
+    "missingPixels": 0,
+    "coveredFraction": 1.0,
+    "outsidePixelsRemoved": 3752,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 0
+  },
+  {
+    "zoom": 11,
+    "tiles": 117,
+    "bytes": 5731873,
+    "regionPixels": 3308637,
+    "missingPixels": 0,
+    "coveredFraction": 1.0,
+    "outsidePixelsRemoved": 7677,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 0
+  },
+  {
+    "zoom": 12,
+    "tiles": 432,
+    "bytes": 21960505,
+    "regionPixels": 13234758,
+    "missingPixels": 0,
+    "coveredFraction": 1.0,
+    "outsidePixelsRemoved": 15009,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 1
+  },
+  {
+    "zoom": 13,
+    "tiles": 1598,
+    "bytes": 89045611,
+    "regionPixels": 52938849,
+    "missingPixels": 0,
+    "coveredFraction": 1.0,
+    "outsidePixelsRemoved": 29291,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 5
+  },
+  {
+    "zoom": 14,
+    "tiles": 6231,
+    "bytes": 366713932,
+    "regionPixels": 211755688,
+    "missingPixels": 0,
+    "coveredFraction": 1.0,
+    "outsidePixelsRemoved": 54116,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 20
+  },
+  {
+    "zoom": 15,
+    "tiles": 24552,
+    "bytes": 1423137252,
+    "regionPixels": 847022403,
+    "missingPixels": 1230,
+    "coveredFraction": 0.9999985478542296,
+    "outsidePixelsRemoved": 91330,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 124
+  },
+  {
+    "zoom": 16,
+    "tiles": 97573,
+    "bytes": 5320837219,
+    "regionPixels": 3388088895,
+    "missingPixels": 61103,
+    "coveredFraction": 0.9999819653492297,
+    "outsidePixelsRemoved": 42217,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 1083
+  }
+]

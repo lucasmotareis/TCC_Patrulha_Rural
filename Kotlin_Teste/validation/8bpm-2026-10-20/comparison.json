@@ -1,0 +1,16 @@
+{
+  "map": "Satélite CBERS · 8º BPM",
+  "imageryDates": "2023–2026",
+  "regional": true,
+  "changedPixelFraction": 0.2347594578492702,
+  "meanChannelDifference": 35.45283073511403,
+  "restoredChangedPixelFraction": 0,
+  "restoredMeanChannelDifference": 0,
+  "width": 1080,
+  "height": 746,
+  "camera": "Target: LatLng [latitude=-9.543940556294674, longitude=-49.313640400000054, altitude=0.0], Center Altitude:0.0, Zoom:7.0, Bearing:-0.0, Tilt:0.0, Roll:0.0, FOV:36.86989764584402, Padding:[66.99999868869781, 66.99999868869781, 66.99999868869781, 66.99999868869781]",
+  "destinationPixelError": 0.0697590400353035,
+  "renderedDestination": [
+    "{\"type\":\"Point\",\"coordinates\":[-49.9270248,-9.5665583]}"
+  ]
+}

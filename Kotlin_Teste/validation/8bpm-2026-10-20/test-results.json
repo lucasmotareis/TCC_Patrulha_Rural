@@ -1,0 +1,157 @@
+{
+  "recordedAt": "2026-10-20T16:28:16.6474369-03:00",
+  "device": "SM-A346M (Galaxy A34), Android 16",
+  "runner": "adb am instrument / AndroidJUnitRunner",
+  "archiveSha256": "05982281cbf299ee41b52dd117f47628542be77bd5b1dbe5c36c4a833d27f889",
+  "testApkSha256": "810831c5319c8b907b4467b83622e79d93cdf0f930a52ee8440c1b97b62bea8f",
+  "status": "passed",
+  "tests": 24,
+  "passed": 24,
+  "failedOrSkipped": 0,
+  "cases": [
+    {
+      "class": "br.com.palmasoffline.GnssProviderDeviceTest",
+      "method": "activatesSatelliteProviderAtHighAccuracyAndReleasesItWhenCancelled",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.LocalMapAssetsDeviceTest",
+      "method": "settlementReferencesKeepOnalicioAndExcludeTheRejectedPoint",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.LocalMapAssetsDeviceTest",
+      "method": "mapSourcesAndGlyphsAreBundledAndInternetIsNotRequested",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.LocalMapAssetsDeviceTest",
+      "method": "vectorLayersStayWithinVisualBoundsAndMatchTheirInventory",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.LocalMapAssetsDeviceTest",
+      "method": "packagedVectorFilesMatchTheirIntegrityManifest",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.MapRenderingDeviceTest",
+      "method": "nativeRendererDrawsRoadsAndFitsCalculatedRoute",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.MapRenderingDeviceTest",
+      "method": "nativeRendererDrawsSettlementPerimetersAndSelectsAReferenceAsDestination",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.NavigationDeviceTest",
+      "method": "simulatorAdvancesRealFerrostarCoreToArrival",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.NavigationDeviceTest",
+      "method": "multiLegIndexesAreAdjustedAfterSharedEndpointRemoval",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.NavigationDeviceTest",
+      "method": "activitySimulationStopsCleanlyAndLateCalculationCannotRestoreIt",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.NavigationDeviceTest",
+      "method": "malformedRouteFailsWithoutRemoteFallback",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.NavigationDeviceTest",
+      "method": "nativeOsrmConversionPreservesGeometryUnitsAndGuidance",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.NavigationSessionDeviceTest",
+      "method": "stoppingDuringUninterruptibleRerouteDiscardsItsResult",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.NavigationSessionDeviceTest",
+      "method": "simulatedDeviationRecalculatesLocallyAndBackgroundPausesSession",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.OfflineRouterDeviceTest",
+      "method": "reportsAnErrorOutsideTheInstalledRegion",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.OfflineRouterDeviceTest",
+      "method": "routesBetweenParaisoPointsUsingLocalTiles",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.OfflineRouterDeviceTest",
+      "method": "newChacaraAccessParticipatesInRouting",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.OfflineRouterDeviceTest",
+      "method": "newOnalicioAccessRoutesFromCasearaInBothDirections",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.OfflineRouterDeviceTest",
+      "method": "sameSizeCorruptedArchiveIsReinstalled",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.RegionalSatelliteDeviceTest",
+      "method": "regionalRasterRendersAcrossAllElevenMunicipalities",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.RegionalSatelliteDeviceTest",
+      "method": "regionalPackageChecksumsAndPixelDataCoverElevenMunicipalities",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.RegionalSatelliteDeviceTest",
+      "method": "nativeFileRasterTilesReadWithoutNetworkPermission",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.SatelliteRenderingDeviceTest",
+      "method": "cbersSampleHasLocalPixelsGeographicBoundsAndProvenance",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "br.com.palmasoffline.SatelliteRenderingDeviceTest",
+      "method": "satellitePixelsRenderAndTogglingPreservesTheRouteAndDestination",
+      "statusCode": 0,
+      "stack": null
+    }
+  ]
+}

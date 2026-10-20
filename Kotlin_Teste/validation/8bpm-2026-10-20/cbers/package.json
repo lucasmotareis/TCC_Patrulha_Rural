@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "packageId": "cbers8bpm-v1",
+  "title": "Satélite CBERS · 8º BPM",
+  "bounds": [
+    -50.0336576,
+    -10.5439423,
+    -48.5936232,
+    -8.5409958
+  ],
+  "projection": "EPSG:3857",
+  "scheme": "xyz",
+  "format": "png",
+  "tileSize": 256,
+  "minZoom": 7,
+  "maxZoom": 16,
+  "tileCount": 130555,
+  "tileBytes": 7229536232,
+  "tileCountByZoom": {
+    "7": 1,
+    "8": 4,
+    "9": 12,
+    "10": 35,
+    "11": 117,
+    "12": 432,
+    "13": 1598,
+    "14": 6231,
+    "15": 24552,
+    "16": 97573
+  },
+  "indexSha256": "f21bfc0091f6167d167937a3ee9032874a14ef5abdeac1c1aa835c0e9fae930b",
+  "sourceSceneCount": 21,
+  "startDate": "2023-05-14",
+  "endDate": "2026-08-04",
+  "attribution": "CBERS-4A / INPE · CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceUrl": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-PCA-FUSED-1",
+  "municipalityCount": 11,
+  "strictMunicipalityMask": true,
+  "pixelMeters3857AtMaxZoom": 2.388657133911758,
+  "probes": [
+    {
+      "municipality": "Abreulândia",
+      "code": "1700251",
+      "longitude": -49.344858317090456,
+      "latitude": -9.46046235,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Abreulândia",
+      "code": "1700251",
+      "longitude": -49.344858317090456,
+      "latitude": -9.46046235,
+      "zoom": 12,
+      "path": "tiles/12/1486/2156.png",
+      "bytes": 108056,
+      "sha256": "1abdfd5ac19b45933d1cb058a6dd979c1d72e64c4aaeada45462e7364358ffcf"
+    },
+    {
+      "municipality": "Abreulândia",
+      "code": "1700251",
+      "longitude": -49.344858317090456,
+      "latitude": -9.46046235,
+      "zoom": 16,
+      "path": "tiles/16/23785/34498.png",
+      "bytes": 96765,
+      "sha256": "9f3068b38f10c28639d306ae18ebc5ded04619b201a77f66bf14d4a8cd7fc714"
+    },
+    {
+      "municipality": "Araguacema",
+      "code": "1701903",
+      "longitude": -49.57718395809241,
+      "latitude": -8.908886500000001,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Araguacema",
+      "code": "1701903",
+      "longitude": -49.57718395809241,
+      "latitude": -8.908886500000001,
+      "zoom": 12,
+      "path": "tiles/12/1483/2149.png",
+      "bytes": 95639,
+      "sha256": "52fed635f24ac03da0b54421e0d7e9434b26951dc47ad4c60c894656f6425d4d"
+    },
+    {
+      "municipality": "Araguacema",
+      "code": "1701903",
+      "longitude": -49.57718395809241,
+      "latitude": -8.908886500000001,
+      "zoom": 16,
+      "path": "tiles/16/23742/34396.png",
+      "bytes": 92275,
+      "sha256": "e00af96a081952d3b69517a048dd463e9f1d4965a111b10caeb93af9a2fb6086"
+    },
+    {
+      "municipality": "Barrolândia",
+      "code": "1703107",
+      "longitude": -48.780233099791886,
+      "latitude": -9.896846,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Barrolândia",
+      "code": "1703107",
+      "longitude": -48.780233099791886,
+      "latitude": -9.896846,
+      "zoom": 12,
+      "path": "tiles/12/1492/2161.png",
+      "bytes": 114077,
+      "sha256": "0034a10387fd4aabced1e765b2075ab101449e9f4c647396e00d04958154f8b7"
+    },
+    {
+      "municipality": "Barrolândia",
+      "code": "1703107",
+      "longitude": -48.780233099791886,
+      "latitude": -9.896846,
+      "zoom": 16,
+      "path": "tiles/16/23887/34578.png",
+      "bytes": 103804,
+      "sha256": "0098b6038fd8225a3f6449b942439e279ea8ba7b9a27682a2b78923ccfc3702f"
+    },
+    {
+      "municipality": "Caseara",
+      "code": "1703909",
+      "longitude": -49.84969691927745,
+      "latitude": -9.37446325,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Caseara",
+      "code": "1703909",
+      "longitude": -49.84969691927745,
+      "latitude": -9.37446325,
+      "zoom": 12,
+      "path": "tiles/12/1480/2155.png",
+      "bytes": 93892,
+      "sha256": "aab537f0207974ca0cc5b3997022abbcbce5a8be11286e4a7c08c3d1433fd65b"
+    },
+    {
+      "municipality": "Caseara",
+      "code": "1703909",
+      "longitude": -49.84969691927745,
+      "latitude": -9.37446325,
+      "zoom": 16,
+      "path": "tiles/16/23693/34482.png",
+      "bytes": 100825,
+      "sha256": "9bbad9e4e6ee7cf25131d0891dbd1bd4c6da535c4ed252eb2759e2e2695d551b"
+    },
+    {
+      "municipality": "Chapada de Areia",
+      "code": "1704600",
+      "longitude": -49.17200909818418,
+      "latitude": -10.166437,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Chapada de Areia",
+      "code": "1704600",
+      "longitude": -49.17200909818418,
+      "latitude": -10.166437,
+      "zoom": 12,
+      "path": "tiles/12/1488/2164.png",
+      "bytes": 98755,
+      "sha256": "bd9bebaef8626da3163bd1fa009faf8867092f4cd478cb77ecb50ae91ab08343"
+    },
+    {
+      "municipality": "Chapada de Areia",
+      "code": "1704600",
+      "longitude": -49.17200909818418,
+      "latitude": -10.166437,
+      "zoom": 16,
+      "path": "tiles/16/23816/34628.png",
+      "bytes": 100873,
+      "sha256": "efd62d6c6b33713d7fe359e30f4c36934c037ab723348942712258d8419d8fe5"
+    },
+    {
+      "municipality": "Divinópolis do Tocantins",
+      "code": "1707108",
+      "longitude": -49.41155201083727,
+      "latitude": -9.63980735,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Divinópolis do Tocantins",
+      "code": "1707108",
+      "longitude": -49.41155201083727,
+      "latitude": -9.63980735,
+      "zoom": 12,
+      "path": "tiles/12/1485/2158.png",
+      "bytes": 103159,
+      "sha256": "13056d4cb3d39b11fbdf2fb5562b497cd1741a211e42854752b30f68706dd0f9"
+    },
+    {
+      "municipality": "Divinópolis do Tocantins",
+      "code": "1707108",
+      "longitude": -49.41155201083727,
+      "latitude": -9.63980735,
+      "zoom": 16,
+      "path": "tiles/16/23772/34531.png",
+      "bytes": 88412,
+      "sha256": "136bdf1753db5c323c3b4a1f8de7a5ee26521270ab48f3a0a49bb39414f44170"
+    },
+    {
+      "municipality": "Dois Irmãos do Tocantins",
+      "code": "1707207",
+      "longitude": -49.020677382994876,
+      "latitude": -9.3330089,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Dois Irmãos do Tocantins",
+      "code": "1707207",
+      "longitude": -49.020677382994876,
+      "latitude": -9.3330089,
+      "zoom": 12,
+      "path": "tiles/12/1490/2154.png",
+      "bytes": 116953,
+      "sha256": "df9a331d0dd39e3b41e2a40a57d1c7d3dfcd59573cc423e952da4343e5e15bbb"
+    },
+    {
+      "municipality": "Dois Irmãos do Tocantins",
+      "code": "1707207",
+      "longitude": -49.020677382994876,
+      "latitude": -9.3330089,
+      "zoom": 16,
+      "path": "tiles/16/23844/34474.png",
+      "bytes": 107684,
+      "sha256": "a1a091852e9433ddfac66c49ddbf25134467716039862676ecd7259c5269ae93"
+    },
+    {
+      "municipality": "Marianópolis do Tocantins",
+      "code": "1712504",
+      "longitude": -49.76065632325732,
+      "latitude": -9.7725136,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Marianópolis do Tocantins",
+      "code": "1712504",
+      "longitude": -49.76065632325732,
+      "latitude": -9.7725136,
+      "zoom": 12,
+      "path": "tiles/12/1481/2159.png",
+      "bytes": 104881,
+      "sha256": "29c6b8e1d9c2c37c34c0d154247dc751ea3697e84b3594312eab5ecb03ab1413"
+    },
+    {
+      "municipality": "Marianópolis do Tocantins",
+      "code": "1712504",
+      "longitude": -49.76065632325732,
+      "latitude": -9.7725136,
+      "zoom": 16,
+      "path": "tiles/16/23709/34555.png",
+      "bytes": 98781,
+      "sha256": "8a53a749924b00b8fdf5bc3025e3fc0f90915868ab49f9e19c867e4ffaecce11"
+    },
+    {
+      "municipality": "Monte Santo do Tocantins",
+      "code": "1713700",
+      "longitude": -49.11211273280326,
+      "latitude": -9.987677999999999,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Monte Santo do Tocantins",
+      "code": "1713700",
+      "longitude": -49.11211273280326,
+      "latitude": -9.987677999999999,
+      "zoom": 12,
+      "path": "tiles/12/1489/2162.png",
+      "bytes": 116763,
+      "sha256": "e26051737f77d4226e5748b42647ed4c68c22f87bbd2753b2f151508cf63f4a3"
+    },
+    {
+      "municipality": "Monte Santo do Tocantins",
+      "code": "1713700",
+      "longitude": -49.11211273280326,
+      "latitude": -9.987677999999999,
+      "zoom": 16,
+      "path": "tiles/16/23827/34595.png",
+      "bytes": 95703,
+      "sha256": "6930c2812c7576bc0c6702282803647733ed2dd6cfc13d4062c84d4e2c2dbb13"
+    },
+    {
+      "municipality": "Paraíso do Tocantins",
+      "code": "1716109",
+      "longitude": -48.867702069158355,
+      "latitude": -10.213372,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Paraíso do Tocantins",
+      "code": "1716109",
+      "longitude": -48.867702069158355,
+      "latitude": -10.213372,
+      "zoom": 12,
+      "path": "tiles/12/1491/2164.png",
+      "bytes": 127169,
+      "sha256": "353f3b6db770aef16bc33d418367d30bc1f551960a3b592d75ecfffa3c8470fe"
+    },
+    {
+      "municipality": "Paraíso do Tocantins",
+      "code": "1716109",
+      "longitude": -48.867702069158355,
+      "latitude": -10.213372,
+      "zoom": 16,
+      "path": "tiles/16/23871/34637.png",
+      "bytes": 107887,
+      "sha256": "bce47b71de7b1308274be19796cb93056ad3c9b1e86b426b4fe1c79a01eda5f2"
+    },
+    {
+      "municipality": "Pugmil",
+      "code": "1718451",
+      "longitude": -48.86248580764171,
+      "latitude": -10.4203027,
+      "zoom": 7,
+      "path": "tiles/7/46/67.png",
+      "bytes": 30311,
+      "sha256": "7c766856cfeba6fbb14a51393e7d5903ceb5e2507160694917bbdfe74e0ac6a7"
+    },
+    {
+      "municipality": "Pugmil",
+      "code": "1718451",
+      "longitude": -48.86248580764171,
+      "latitude": -10.4203027,
+      "zoom": 12,
+      "path": "tiles/12/1492/2167.png",
+      "bytes": 103949,
+      "sha256": "6c3f910f98d42336069eea31879717ac1c672e8924da1bc4ff63d0947a22273d"
+    },
+    {
+      "municipality": "Pugmil",
+      "code": "1718451",
+      "longitude": -48.86248580764171,
+      "latitude": -10.4203027,
+      "zoom": 16,
+      "path": "tiles/16/23872/34675.png",
+      "bytes": 99758,
+      "sha256": "213b8ff9e4ef90f6440c3c1900fa67726fdf39bc8e729ae4bc7fd25e1963628e"
+    }
+  ],
+  "coverage": {
+    "zoom": 16,
+    "tiles": 97573,
+    "bytes": 5320837219,
+    "regionPixels": 3388088895,
+    "missingPixels": 61103,
+    "coveredFraction": 0.9999819653492297,
+    "outsidePixelsRemoved": 42217,
+    "visibleOutsideRegionAfterMask": 0,
+    "seconds": 1083
+  },
+  "createdAt": "2026-10-20T18:51:05.518435+00:00"
+}
