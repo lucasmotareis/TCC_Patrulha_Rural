@@ -21,8 +21,8 @@ import uniffi.ferrostar.*
 /** Uses the actual published Ferrostar native core and the Valhalla tiles packaged in this APK. */
 @RunWith(AndroidJUnit4::class)
 class NavigationDeviceTest {
-    private val origin = Coordinates(-10.247473, -48.341647)
-    private val destination = Coordinates(-10.246252, -48.338953)
+    private val origin = Coordinates(-10.174828510086803, -48.88691423323496)
+    private val destination = Coordinates(-10.173246456726565, -48.887796726552125)
     private val context get() = InstrumentationRegistry.getInstrumentation().targetContext
 
     @Test fun nativeOsrmConversionPreservesGeometryUnitsAndGuidance() {

@@ -5,7 +5,13 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Path
+import android.graphics.RectF
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import org.json.JSONObject
 import org.maplibre.android.style.layers.SymbolLayer
+import org.maplibre.android.style.layers.RasterLayer
 import org.maplibre.android.style.layers.PropertyFactory.*
 import uniffi.ferrostar.UserLocation
 import org.maplibre.android.camera.CameraPosition
@@ -16,14 +22,25 @@ import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.sources.GeoJsonSource
+import org.maplibre.android.style.sources.ImageSource
 import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.geojson.LineString
 import org.maplibre.geojson.Point
+import java.net.URI
 
 /** Owns the map renderer; all calls occur on the UI thread. No network sources. */
 class PalmasMapController(val view: MapView, savedState: Bundle?, private val reportStatus: (String?) -> Unit) {
     var onPointSelected: (Coordinates) -> Unit = {}
+    var onSettlementSelected: (SettlementDestination) -> Unit = {}
+    val satelliteSample = SatelliteSample.load(view.context)
+    val satelliteMap: SatelliteMapInfo? = OfflineSatellitePackage.load(view.context) ?: satelliteSample
+    private var satelliteVisibility by mutableStateOf(
+        satelliteMap != null && (savedState?.getBoolean(SATELLITE_STATE_KEY, true) ?: true)
+    )
+    val satelliteEnabled: Boolean get() = satelliteVisibility
+    private var satelliteLayer: RasterLayer? = null
+    private var satelliteLoadFailed = false
     private var map: MapLibreMap? = null
     private var style: Style? = null
     private var routeSource: GeoJsonSource? = null
@@ -35,7 +52,22 @@ class PalmasMapController(val view: MapView, savedState: Bundle?, private val re
     private var destroyed = false
     private var desired = MapData(null, null, null)
     private var rendered: MapData? = null
-    private val bounds = LatLngBounds.from(PalmasRegion.NORTH, PalmasRegion.EAST, PalmasRegion.SOUTH, PalmasRegion.WEST)
+    private var needsInitialRegionFit = savedState == null
+    private val bounds = LatLngBounds.from(BatalhaoRegion.NORTH, BatalhaoRegion.EAST, BatalhaoRegion.SOUTH, BatalhaoRegion.WEST)
+    private val visualBounds: LatLngBounds by lazy {
+        runCatching {
+            val metadata = view.context.assets.open("batalhao/metadata.json").bufferedReader().use { JSONObject(it.readText()) }
+            val values = metadata.getJSONArray("visualBounds")
+            val west = values.getDouble(0)
+            val south = values.getDouble(1)
+            val east = values.getDouble(2)
+            val north = values.getDouble(3)
+            require(west < east && south < north &&
+                BatalhaoRegion.contains(Coordinates(south, west)) &&
+                BatalhaoRegion.contains(Coordinates(north, east)))
+            LatLngBounds.from(north, east, south, west)
+        }.getOrDefault(bounds)
+    }
 
     init {
         view.onCreate(savedState)
@@ -47,6 +79,7 @@ class PalmasMapController(val view: MapView, savedState: Bundle?, private val re
                     if (!destroyed) {
                         if (wasNavigating && following) followPosition()
                         else if (!wasNavigating && desired.route != null) fitRoute()
+                        else fitInitialRegion()
                     }
                 }
             }
@@ -58,23 +91,38 @@ class PalmasMapController(val view: MapView, savedState: Bundle?, private val re
             if (!destroyed) {
                 map = readyMap
                 readyMap.setLatLngBoundsForCameraTarget(bounds)
-                readyMap.setMinZoomPreference(10.5)
+                readyMap.setMinZoomPreference(7.0)
                 readyMap.setMaxZoomPreference(19.0)
                 readyMap.uiSettings.isCompassEnabled = false
                 readyMap.uiSettings.isRotateGesturesEnabled = false
                 readyMap.uiSettings.isTiltGesturesEnabled = false
                 if (savedState == null) {
-                    readyMap.cameraPosition = CameraPosition.Builder().target(LatLng(-10.245, -48.325)).zoom(12.0).build()
+                    readyMap.cameraPosition = CameraPosition.Builder().target(visualBounds.center).zoom(7.0).build()
                 }
                 readyMap.addOnCameraMoveStartedListener { reason -> if (reason == 1) following = false }
                 readyMap.addOnMapClickListener { location ->
-                    val point = Coordinates(location.latitude, location.longitude)
-                    if (PalmasRegion.contains(point)) onPointSelected(point)
+                    val screenPoint = readyMap.projection.toScreenLocation(location)
+                    val radius = 20 * view.resources.displayMetrics.density
+                    val settlement = readyMap.queryRenderedFeatures(
+                        RectF(screenPoint.x - radius, screenPoint.y - radius, screenPoint.x + radius, screenPoint.y + radius),
+                        "settlement-points", "settlement-labels",
+                    ).mapNotNull { SettlementDestination.fromFeature(it) }.minByOrNull {
+                        val position = readyMap.projection.toScreenLocation(LatLng(it.coordinates.latitude, it.coordinates.longitude))
+                        val dx = position.x - screenPoint.x
+                        val dy = position.y - screenPoint.y
+                        dx * dx + dy * dy
+                    }
+                    if (settlement != null) onSettlementSelected(settlement)
+                    else {
+                        val point = Coordinates(location.latitude, location.longitude)
+                        if (BatalhaoRegion.contains(point)) onPointSelected(point)
+                    }
                     true
                 }
-                readyMap.setStyle(Style.Builder().fromUri("asset://palmas/style.json")) { loaded ->
+                readyMap.setStyle(Style.Builder().fromUri("asset://batalhao/style.json")) { loaded ->
                     if (!destroyed) {
                         style = loaded
+                        installSatelliteSample(loaded)
                         routeSource = loaded.getSourceAs<GeoJsonSource>("route")
                         // Commit this small source before fitting the camera, then request a frame.
                         routeSource?.setOverrideSynchronousUpdate(true)
@@ -89,6 +137,7 @@ class PalmasMapController(val view: MapView, savedState: Bundle?, private val re
                         navigationLayer = positionLayer
                         reportStatus(null)
                         render()
+                        fitInitialRegion()
                     }
                 }
             }
@@ -141,6 +190,55 @@ class PalmasMapController(val view: MapView, savedState: Bundle?, private val re
 
     fun recenter() { following = true; followPosition() }
 
+    private fun installSatelliteSample(loaded: Style) {
+        val satellite = satelliteMap ?: return
+        try {
+            if (satellite is OfflineSatellitePackage) loaded.addSource(satellite.source("satellite-sample"))
+            else satelliteSample?.let { loaded.addSource(ImageSource("satellite-sample", it.corners, URI(it.assetUri))) }
+            val layer = RasterLayer("satellite-sample-raster", "satellite-sample").withProperties(
+                rasterOpacity(1f), rasterFadeDuration(0f), rasterBrightnessMin(0.08f), rasterContrast(0.1f),
+                visibility(if (satelliteEnabled) "visible" else "none"),
+            )
+            // Preserve roads, boundaries, settlement references and the active route above the image.
+            loaded.addLayerBelow(layer, "streams")
+            satelliteLayer = layer
+        } catch (_: Exception) {
+            satelliteLoadFailed = true
+            satelliteVisibility = false
+        }
+    }
+
+    fun setSatelliteEnabled(enabled: Boolean) {
+        satelliteVisibility = enabled && satelliteMap != null && !satelliteLoadFailed
+        satelliteLayer?.setProperties(visibility(if (satelliteEnabled) "visible" else "none"))
+        map?.triggerRepaint()
+    }
+
+    fun fitSatelliteSample() {
+        val satellite = satelliteMap ?: return
+        fitBounds(satellite.bounds)
+    }
+
+    private fun fitInitialRegion() {
+        if (needsInitialRegionFit && desired.route == null && !wasNavigating) {
+            if (satelliteEnabled) fitSatelliteSample() else fitRegion()
+        }
+    }
+
+    fun fitRegion() = fitBounds(visualBounds)
+
+    private fun fitBounds(target: LatLngBounds) {
+        view.post {
+            if (!destroyed && style != null && view.width > 0 && view.height > 0) {
+                if (wasNavigating) following = false
+                needsInitialRegionFit = false
+                val padding = (24 * view.resources.displayMetrics.density).toInt()
+                map?.moveCamera(CameraUpdateFactory.newLatLngBounds(target, padding))
+                map?.triggerRepaint()
+            }
+        }
+    }
+
     private fun followPosition() {
         val location = userLocation ?: return
         val bearing = location.courseOverGround?.degrees?.toDouble() ?: map?.cameraPosition?.bearing ?: 0.0
@@ -179,12 +277,22 @@ class PalmasMapController(val view: MapView, savedState: Bundle?, private val re
     fun destroy() {
         destroyed = true
         onPointSelected = {}
+        onSettlementSelected = {}
         map = null
         style = null
         routeSource = null
+        satelliteLayer = null
         view.onDestroy()
+    }
+
+    fun saveState(outState: Bundle) {
+        outState.putBoolean(SATELLITE_STATE_KEY, satelliteEnabled)
+        view.onSaveInstanceState(outState)
     }
 
     private fun emptyFeatures() = FeatureCollection.fromFeatures(emptyList<Feature>())
     private data class MapData(val origin: Coordinates?, val destination: Coordinates?, val route: RouteResult?)
+    private companion object {
+        const val SATELLITE_STATE_KEY = "batalhao.satellite.enabled"
+    }
 }

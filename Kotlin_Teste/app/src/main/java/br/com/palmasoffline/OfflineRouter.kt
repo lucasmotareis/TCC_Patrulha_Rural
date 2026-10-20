@@ -5,6 +5,7 @@ import com.valhalla.valhalla.Valhalla
 import com.valhalla.valhalla.config.ValhallaConfigFactory
 import java.io.Closeable
 import java.io.File
+import java.security.MessageDigest
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -45,25 +46,42 @@ class OfflineRouter(context: Context) : Closeable {
     }
 
     private fun request(origin: Coordinates, destination: Coordinates): JSONObject {
-        require(PalmasRegion.contains(origin) && PalmasRegion.contains(destination)) {
-            "Origem e destino precisam estar dentro do recorte de Palmas instalado."
+        require(BatalhaoRegion.contains(origin) && BatalhaoRegion.contains(destination)) {
+            "Origem e destino precisam estar dentro da região offline do batalhão."
         }
         fun point(coordinates: Coordinates) = JSONObject()
             .put("lat", coordinates.latitude).put("lon", coordinates.longitude)
+            .put("search_cutoff", 100)
         return JSONObject().put("locations", JSONArray().put(point(origin)).put(point(destination)))
             .put("costing", "auto")
             .put("directions_options", JSONObject().put("units", "kilometers").put("language", "pt-BR"))
     }
 
     private fun initialize(): Valhalla {
-        val tiles = File(context.filesDir, "palmas_tiles_v1.tar")
-        val expectedLength = context.assets.openFd("palmas_tiles_v1.tar").use { it.length }
-        if (!tiles.isFile || tiles.length() != expectedLength) {
+        val metadata = context.assets.open("batalhao/metadata.json").bufferedReader().use { JSONObject(it.readText()) }
+        val expectedHash = metadata.getString("routingSha256")
+        require(expectedHash.matches(Regex("[0-9a-f]{64}"))) { "Identificação inválida do pacote de navegação." }
+        val tiles = File(context.filesDir, "batalhao_${expectedHash.take(16)}.tar")
+        val expectedLength = context.assets.openFd("batalhao_tiles_v1.tar").use { it.length }
+        fun digest(file: File): String {
+            val hash = MessageDigest.getInstance("SHA-256")
+            file.inputStream().use { input ->
+                val buffer = ByteArray(64 * 1024)
+                while (true) {
+                    val count = input.read(buffer)
+                    if (count < 0) break
+                    hash.update(buffer, 0, count)
+                }
+            }
+            return hash.digest().joinToString("") { "%02x".format(it.toInt() and 0xff) }
+        }
+        if (!tiles.isFile || tiles.length() != expectedLength || digest(tiles) != expectedHash) {
             require(context.filesDir.usableSpace > expectedLength) { "Espaço insuficiente para instalar os dados de roteamento." }
-            val temporary = File(context.filesDir, "palmas_tiles_v1.tar.part")
+            val temporary = File(context.filesDir, "${tiles.name}.part")
             try {
-                context.assets.open("palmas_tiles_v1.tar").use { input -> temporary.outputStream().use { input.copyTo(it) } }
+                context.assets.open("batalhao_tiles_v1.tar").use { input -> temporary.outputStream().use { input.copyTo(it) } }
                 check(temporary.length() == expectedLength) { "A cópia dos tiles ficou incompleta." }
+                check(digest(temporary) == expectedHash) { "O pacote de navegação falhou na verificação de integridade." }
                 check(temporary.renameTo(tiles)) { "Não foi possível instalar os tiles." }
             } finally { temporary.delete() }
         }

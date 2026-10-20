@@ -4,7 +4,7 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class NavigationPolicyTest {
-    private val palmas = Coordinates(-10.247473, -48.341647)
+    private val palmas = Coordinates(-10.1752474, -48.886759)
     @Test fun acceptsFreshPrecisePositionInCoverage() { assertNull(LocationPolicy.problem(palmas, 8.0, 1000)) }
     @Test fun rejectsOldImpreciseAndOutOfCoverageFixes() {
         assertNotNull(LocationPolicy.problem(palmas, 8.0, 12_001))

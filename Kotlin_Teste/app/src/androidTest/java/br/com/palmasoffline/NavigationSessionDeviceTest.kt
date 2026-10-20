@@ -18,8 +18,8 @@ class NavigationSessionDeviceTest {
     @Test fun stoppingDuringUninterruptibleRerouteDiscardsItsResult() = runBlocking {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val application = instrumentation.targetContext.applicationContext as android.app.Application
-        val origin = Coordinates(-10.247473, -48.341647)
-        val destination = Coordinates(-10.246252, -48.338953)
+        val origin = Coordinates(-10.174828510086803, -48.88691423323496)
+        val destination = Coordinates(-10.173246456726565, -48.887796726552125)
         val route = OfflineRouter(application).use { OfflineNavigationRouteProvider.decode(it.navigationJson(origin, destination)).first() }
         val started = CompletableDeferred<Unit>()
         val release = CompletableDeferred<Unit>()
@@ -63,8 +63,8 @@ class NavigationSessionDeviceTest {
     }
 
     @Test fun simulatedDeviationRecalculatesLocallyAndBackgroundPausesSession() = runBlocking {
-        val origin = Coordinates(-10.247473, -48.341647)
-        val destination = Coordinates(-10.246252, -48.338953)
+        val origin = Coordinates(-10.174828510086803, -48.88691423323496)
+        val destination = Coordinates(-10.173246456726565, -48.887796726552125)
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             lateinit var model: RouteViewModel
             scenario.onActivity { activity ->

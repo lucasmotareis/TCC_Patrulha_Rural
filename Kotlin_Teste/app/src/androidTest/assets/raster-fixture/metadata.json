@@ -1,0 +1,13 @@
+{
+  "bounds": [
+    -49.95454064552815,
+    -9.593878071434448,
+    -49.89934815447185,
+    -9.539453150287358
+  ],
+  "zoom": 14,
+  "tiles": 12,
+  "attribution": "CBERS-4A / INPE · CC BY 4.0",
+  "sourceUrl": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-PCA-FUSED-1/items/CBERS4A_WPM_PCA_RGB321_20260804_210_125",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+}

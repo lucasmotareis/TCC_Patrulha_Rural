@@ -9,9 +9,14 @@ android {
         applicationId = "br.com.palmasoffline"
         minSdk = 25
         targetSdk = 36
-        versionCode = 4
-        versionName = "0.3.1"
+        versionCode = 9
+        versionName = "0.6.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // Optional device-specific package; ordinary builds still include all supported ABIs.
+        providers.gradleProperty("targetAbi").orNull?.let { targetAbi ->
+            require(targetAbi in setOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64"))
+            ndk { abiFilters += targetAbi }
+        }
     }
     buildFeatures { compose = true }
     compileOptions {
@@ -20,6 +25,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     androidResources { noCompress += "tar" }
+    sourceSets.getByName("main").assets.setSrcDirs(listOf("src/main/batalhaoAssets"))
 }
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")

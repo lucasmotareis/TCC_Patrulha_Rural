@@ -119,7 +119,7 @@ class RouteViewModel @JvmOverloads constructor(
         mutableState.update { it.copy(error = null, busy = false) }
         mutableSession.value = SessionUiState(phase = NavigationPhase.ACQUIRING, destination = destination, voiceMessage = mutableSession.value.voiceMessage,
             message = "Obtendo uma posição GPS precisa para calcular a rota…")
-        if (!PalmasRegion.contains(destination)) { mutableSession.update { it.copy(message = "Destino fora da cobertura offline.") }; return }
+        if (!BatalhaoRegion.contains(destination)) { mutableSession.update { it.copy(message = "Destino fora da cobertura offline.") }; return }
         acquiredDestination = destination
         startGps()
     }
@@ -335,7 +335,7 @@ class RouteViewModel @JvmOverloads constructor(
         deviationJob = viewModelScope.launch {
             val current = feed.lastLocation() ?: return@launch
             val point = Coordinates(current.latitude, current.longitude + 0.0015)
-            if (!PalmasRegion.contains(point)) { injectingDeviation = false; return@launch }
+            if (!BatalhaoRegion.contains(point)) { injectingDeviation = false; return@launch }
             repeat(7) {
                 if (!mutableSession.value.navigating || !injectingDeviation) return@launch
                 val fix = simulatedLocation(point)

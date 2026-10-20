@@ -9,7 +9,7 @@
     <queries>
         <intent><action android:name="android.intent.action.TTS_SERVICE" /></intent>
     </queries>
-    <application android:allowBackup="false" android:fullBackupContent="false" android:label="Palmas Offline"
+    <application android:allowBackup="false" android:fullBackupContent="false" android:label="Patrulha Rural"
         android:icon="@drawable/ic_route" android:dataExtractionRules="@xml/data_extraction_rules"
         android:theme="@android:style/Theme.Material.Light.NoActionBar"
         android:supportsRtl="true">

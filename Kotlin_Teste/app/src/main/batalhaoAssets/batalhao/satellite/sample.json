@@ -1,0 +1,26 @@
+{
+  "title": "Satélite CBERS · Onalício Barros",
+  "acquiredAt": "2026-08-04",
+  "bounds": [
+    -49.95454064552815,
+    -9.593878071434448,
+    -49.89934815447185,
+    -9.539453150287358
+  ],
+  "image": "sample.png",
+  "attribution": "CBERS-4A / INPE · CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceUrl": "https://data.inpe.br/bdc/stac/v1/collections/CB4A-WPM-PCA-FUSED-1/items/CBERS4A_WPM_PCA_RGB321_20260804_210_125",
+  "imageSha256": "a939dababef8b5c379356ef4944e78c848cac7fb8cbd250c71ec6465807e40d9",
+  "imageBytes": 12572533,
+  "width": 3072,
+  "height": 3072,
+  "pixelMeters3857": 2,
+  "projection": "EPSG:3857",
+  "processing": "RGB fusionado por PCA pelo INPE; recorte, reprojeção EPSG:3857 e máscara dos 11 municípios.",
+  "nativeResolution": {
+    "panchromaticMeters": 2,
+    "multispectralMeters": 8
+  },
+  "strictMunicipalityMask": true
+}

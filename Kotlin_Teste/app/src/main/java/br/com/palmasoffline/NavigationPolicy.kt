@@ -18,7 +18,7 @@ object LocationPolicy {
         !point.latitude.isFinite() || !point.longitude.isFinite() -> "Localização inválida."
         ageMillis < -1000 || ageMillis > MAX_AGE_MILLIS -> "Sinal GPS desatualizado. Aguarde uma nova posição."
         accuracy == null || !accuracy.isFinite() || accuracy <= 0 || accuracy > MAX_ACCURACY_METERS -> "Aguardando uma posição dos satélites com precisão de até 50 m."
-        !PalmasRegion.contains(point) -> "Você está fora da cobertura offline de Palmas."
+        !BatalhaoRegion.contains(point) -> "Você está fora da região offline do batalhão."
         else -> null
     }
 }

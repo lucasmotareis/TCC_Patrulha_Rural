@@ -9,9 +9,9 @@ try {
     }
     $env:JAVA_HOME = $JavaHome
     $env:GRADLE_USER_HOME = Join-Path $PSScriptRoot '.tools/gradle-home'
-    $gpsTiles = Join-Path $PSScriptRoot 'app/src/main/assets/palmas_tiles_v1.tar'
+    $gpsTiles = Join-Path $PSScriptRoot 'app/src/main/batalhaoAssets/batalhao_tiles_v1.tar'
     if (!(Test-Path -LiteralPath $gpsTiles)) {
-        throw 'Gere palmas_tiles_v1.tar com scripts/prepare_palmas.py antes de compilar.'
+        throw 'Gere batalhao_tiles_v1.tar com scripts/package_batalhao.py antes de compilar.'
     }
     & .\gradlew.bat :app:testDebugUnitTest :app:assembleDebug :app:lintDebug --console=plain --max-workers=4
     if ($LASTEXITCODE -ne 0) { throw "Gradle falhou com código $LASTEXITCODE." }
